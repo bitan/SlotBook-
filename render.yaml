@@ -21,7 +21,7 @@ services:
       - key: FRONTEND_URL
         value: https://slotbook.netlify.app  # Update to your Netlify domain
       - key: DB_CONNECTION
-        value: mysql
+        value: sqlite
       - key: QUEUE_CONNECTION
         value: database
       - key: CACHE_DRIVER

@@ -25,3 +25,5 @@ api/storage/framework/views/
 api/bootstrap/cache/*.php
 api/.phpunit.cache
 api/.phpunit.result.cache
+api/database/*.sqlite
+api/database/*.sqlite-journal
