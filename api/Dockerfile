@@ -43,8 +43,8 @@ RUN php artisan key:generate
 # Create SQLite database
 RUN mkdir -p database && touch database/slotbook.sqlite
 
-# Run migrations
-RUN php artisan migrate --force --seed
+# Run migrations only (skip seeding for now - will seed on first run)
+RUN php artisan migrate --force
 
 # Expose port
 EXPOSE 8000
