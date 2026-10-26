@@ -4,7 +4,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_ENV = "production"
 
 # Serve the pre-rendered static files
 [[redirects]]
