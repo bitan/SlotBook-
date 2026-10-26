@@ -16,6 +16,9 @@ RUN docker-php-ext-install pdo pdo_sqlite
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Configure Composer to not check security advisories in Docker  
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # Set working directory
 WORKDIR /app
 
@@ -23,7 +26,7 @@ WORKDIR /app
 COPY . /app
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts
+RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-reqs --prefer-stable
 
 # Generate app key
 RUN php artisan key:generate
