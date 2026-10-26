@@ -18,8 +18,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Set working directory
 WORKDIR /app
 
-# Copy application
-COPY api /app
+# Copy application (Dockerfile is in api/ folder, so copy current dir)
+COPY . /app
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
