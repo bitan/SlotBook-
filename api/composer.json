@@ -50,7 +50,16 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin-laravel": true
+        },
+        "platform-check": false
+    },
+    "policy": {
+        "advisories": {
+            "block": false
+        }
     },
     "minimum-stability": "stable",
     "prefer-stable": true

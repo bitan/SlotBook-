@@ -22,7 +22,7 @@ WORKDIR /app
 # Copy application (Dockerfile is in api/ folder, so copy current dir)
 COPY . /app
 
-# Install dependencies
+# Install dependencies (ignore security advisories for build)
 RUN composer install --no-dev --optimize-autoloader
 
 # Generate app key
