@@ -34,6 +34,9 @@ RUN mkdir -p bootstrap/cache storage/logs && chmod -R 775 bootstrap/cache storag
 # Now run post-install scripts that need artisan
 RUN php artisan package:discover --ansi
 
+# Create .env file from .env.example
+RUN cp .env.example .env
+
 # Generate app key
 RUN php artisan key:generate
 
