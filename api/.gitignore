@@ -1,0 +1,11 @@
+/vendor/
+/node_modules/
+.env
+.phpunit.result.cache
+/storage/*.key
+/public/hot
+/public/storage
+Homestead.json
+Homestead.yaml
+/.vagrant
+.phpunit.cache
