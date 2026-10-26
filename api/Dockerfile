@@ -26,7 +26,10 @@ WORKDIR /app
 COPY . /app
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-reqs --no-security-blocking
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-security-blocking
+
+# Verify vendor and artisan exist
+RUN test -f /app/vendor/autoload.php && test -f /app/artisan || (echo "Composer install failed - vendor or artisan missing" && exit 1)
 
 # Generate app key
 RUN php artisan key:generate
