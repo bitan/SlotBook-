@@ -46,8 +46,11 @@ RUN mkdir -p database && touch database/slotbook.sqlite
 # Run migrations only (skip seeding for now - will seed on first run)
 RUN php artisan migrate --force
 
+# Create public directory
+RUN mkdir -p public
+
 # Expose port
 EXPOSE 8000
 
-# Start Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Use PHP built-in server pointing to public directory
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app/public"]
