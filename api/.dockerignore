@@ -1,0 +1,9 @@
+node_modules
+frontend/node_modules
+frontend/out
+frontend/.next
+api/vendor
+api/storage/logs
+api/database/*.sqlite
+.git
+.gitignore
