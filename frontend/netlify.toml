@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NEXT_PUBLIC_API_URL = "https://slotbook-mia7.onrender.com/api/v1"
 
 # Serve the pre-rendered static files
 [[redirects]]
