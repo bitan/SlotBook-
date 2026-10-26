@@ -26,7 +26,7 @@ WORKDIR /app
 COPY . /app
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-reqs --prefer-stable
+RUN composer install --no-dev --optimize-autoloader --no-scripts --ignore-platform-reqs --no-security-blocking
 
 # Generate app key
 RUN php artisan key:generate
