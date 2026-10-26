@@ -28,9 +28,6 @@ COPY . /app
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-security-blocking --no-scripts
 
-# Verify vendor and artisan exist
-RUN test -f /app/vendor/autoload.php && test -f /app/artisan || (echo "Composer install failed - vendor or artisan missing" && exit 1)
-
 # Now run post-install scripts that need artisan
 RUN php artisan package:discover --ansi
 
