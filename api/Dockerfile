@@ -22,8 +22,8 @@ WORKDIR /app
 # Copy application (Dockerfile is in api/ folder, so copy current dir)
 COPY . /app
 
-# Install dependencies (ignore security advisories for build)
-RUN composer install --no-dev --optimize-autoloader
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Generate app key
 RUN php artisan key:generate
