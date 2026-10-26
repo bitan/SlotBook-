@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: slotbook-api
+    runtime: php
+    plan: free
+    rootDir: api
+    buildCommand: composer install --no-dev && php artisan key:generate && php artisan migrate --force --seed
+    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: APP_URL
+        fromService:
+          type: web
+          name: slotbook-api
+          property: url
+      - key: FRONTEND_URL
+        value: https://slotbook.netlify.app  # Update to your Netlify domain
+      - key: DB_CONNECTION
+        value: mysql
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: CACHE_DRIVER
+        value: database
+
+  - type: background-worker
+    name: slotbook-queue
+    runtime: php
+    plan: free
+    rootDir: api
+    buildCommand: composer install --no-dev
+    startCommand: php artisan queue:work --sleep=3 --tries=3
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: LOG_CHANNEL
+        value: stderr
