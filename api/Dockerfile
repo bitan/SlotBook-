@@ -28,8 +28,16 @@ COPY . /app
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-security-blocking --no-scripts
 
-# Create required directories
-RUN mkdir -p bootstrap/cache storage/logs && chmod -R 775 bootstrap/cache storage
+# Create required directories and set permissions
+RUN mkdir -p bootstrap/cache \
+    storage/app/public \
+    storage/framework/cache/data \
+    storage/framework/sessions \
+    storage/framework/testing \
+    storage/framework/views \
+    storage/logs \
+    && chmod -R 775 bootstrap/cache storage \
+    && chown -R www-data:www-data bootstrap/cache storage
 
 # Now run post-install scripts that need artisan
 RUN php artisan package:discover --ansi
