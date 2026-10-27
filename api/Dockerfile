@@ -48,6 +48,9 @@ RUN cp .env.example .env
 # Set APP_URL for Render
 RUN sed -i "s|APP_URL=.*|APP_URL=https://slotbook-mia7.onrender.com|g" .env
 
+# Set FRONTEND_URL for CORS
+RUN sed -i "s|FRONTEND_URL=.*|FRONTEND_URL=https://lustrous-pavlova-28ea36.netlify.app|g" .env
+
 # Generate app key
 RUN php artisan key:generate
 
