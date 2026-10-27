@@ -54,4 +54,5 @@ EXPOSE 10000
 
 # Use PHP built-in server pointing to public directory
 # Render requires port 10000 for free tier Docker services
-CMD ["php", "-S", "0.0.0.0:10000", "-t", "/app/public"]
+# Use shell form to ensure proper signal handling
+CMD php -S 0.0.0.0:10000 -t /app/public
