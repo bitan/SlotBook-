@@ -37,6 +37,9 @@ RUN php artisan package:discover --ansi
 # Create .env file from .env.example
 RUN cp .env.example .env
 
+# Set APP_URL for Render
+RUN sed -i "s|APP_URL=.*|APP_URL=https://slotbook-mia7.onrender.com|g" .env
+
 # Generate app key
 RUN php artisan key:generate
 
