@@ -54,8 +54,8 @@ RUN php artisan key:generate
 # Create SQLite database
 RUN mkdir -p database && touch database/slotbook.sqlite
 
-# Run migrations only (skip seeding for now - will seed on first run)
-RUN php artisan migrate --force
+# Run migrations and seed
+RUN php artisan migrate --force --seed
 
 # Create public directory
 RUN mkdir -p public
