@@ -49,8 +49,9 @@ RUN php artisan migrate --force
 # Create public directory
 RUN mkdir -p public
 
-# Expose port
-EXPOSE 8000
+# Expose port for Render
+EXPOSE 10000
 
 # Use PHP built-in server pointing to public directory
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app/public"]
+# Render requires port 10000 for free tier Docker services
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "/app/public"]
